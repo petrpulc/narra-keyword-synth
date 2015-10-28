@@ -48,9 +48,9 @@ module Narra
         keywords
       end
       
-      def keyword_weight(item1, item2)
-        kw1 = value_keywords Narra::MetaItem.where(item: item1, name: 'keywords')
-        kw2 = value_keywords Narra::MetaItem.where(item: item2, name: 'keywords')
+      def keyword_weight(item1, item2, fields)
+        kw1 = value_keywords(Narra::MetaItem.where(item: item1).any_in(name: fields))
+        kw2 = value_keywords(Narra::MetaItem.where(item: item2).any_in(name: fields))
         
         #sum up multiplier of individual keyword weights
         weight = 0.0
@@ -60,7 +60,11 @@ module Narra
       end
 
       def synthesize(options = {})
-        #store fully porcessed item ids, so we will not count distance twice
+        #get list of fields to search in, fallback to ['keywords']
+        fields = options[:fields]
+        fields ||= ['keywords']
+        
+        #store fully processed item ids, so we will not count distance twice
         processed_ids = []
         
         @project.items.each do |item1|
@@ -70,7 +74,7 @@ module Narra
             next if item1 == item2
             
             #count keyword distance
-            weight = keyword_weight(item1, item2)
+            weight = keyword_weight(item1, item2, fields)
             add_junction([item1, item2], weight: weight, synthesizer: @identifier) if weight > 0
           end
           processed_ids << item1._id.to_s
