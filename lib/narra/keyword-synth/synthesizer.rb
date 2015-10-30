@@ -70,7 +70,7 @@ module Narra
         @project.items.each do |item1|
           @project.items.each do |item2|
             #skip lower triangle and diagonal
-            next if item2._id.to_s in processed_ids
+            next if processed_ids.include? item2._id.to_s
             next if item1 == item2
             
             #count keyword distance
