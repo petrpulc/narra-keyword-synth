@@ -41,7 +41,7 @@ module Narra
         metaitems.each do |meta|
           words = meta.value.split(',')
           words.each_with_index do |w, i|
-            keywords[w.strip] += 1/Float(i)
+            keywords[w.strip] += 1/Float(i+1)
           end
         end
         
