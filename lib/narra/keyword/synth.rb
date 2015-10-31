@@ -19,11 +19,13 @@
 # Authors:
 #
 
-require 'narra/keyword-synth/version'
-require 'narra/keyword-synth/synthesizer'
+require 'narra/keyword/synth/version'
+require 'narra/keyword/synth/synthesizer'
 
 module Narra
-  module KeywordSynth
+  module Keyword
+    module Synth
 
+    end
   end
 end

@@ -22,11 +22,11 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'narra/keyword-synth/version'
+require 'narra/keyword/synth/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "narra-keyword-synth"
-  spec.version       = Narra::KeywordSynth::VERSION
+  spec.version       = Narra::Keyword::Synth::VERSION
   spec.authors       = ["Petr Pulc"]
   spec.email         = ["petrpulc@gmail.com"]
   spec.summary       = %q{Keyword based synthesizer for Narra}

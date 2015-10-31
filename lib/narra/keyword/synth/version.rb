@@ -20,7 +20,9 @@
 #
 
 module Narra
-  module KeywordSynth
-    VERSION = '0.0.1'
+  module Keyword
+    module Synth
+      VERSION = '0.0.1'
+    end
   end
 end
